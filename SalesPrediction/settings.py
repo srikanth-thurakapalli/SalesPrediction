@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-_t@nwp#)4w#rqn(i-iui%$f66b(tg1k2(fzc31o*q1gc-u&qqv
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "srikantht.pythonanywhere.com",
+    "salesprediction-nlbb.onrender.com",
+    "localhost",
+    "127.0.0.1",
 ]
 
 
