@@ -26,11 +26,11 @@ SECRET_KEY = 'django-insecure-_t@nwp#)4w#rqn(i-iui%$f66b(tg1k2(fzc31o*q1gc-u&qqv
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "salesprediction-nlbb.onrender.com",
-    "localhost",
-    "127.0.0.1",
+    'salesprediction-nlbb.onrender.com',
+    'srikantht.pythonanywhere.com',
+    'localhost',
+    '127.0.0.1'
 ]
-
 
 # Application definition
 
@@ -119,7 +119,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
