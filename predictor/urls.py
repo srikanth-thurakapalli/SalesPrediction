@@ -3,10 +3,5 @@ from . import views
 
 urlpatterns = [
 
-    path("", views.home),
-
-    path("predict/", views.predict),
-
-    path("history/", views.history),
-
+    path("", views.predict),
 ]
