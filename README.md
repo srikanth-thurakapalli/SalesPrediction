@@ -1,56 +1,61 @@
-# 📊 Sales Analytics and Prediction System
+# 📈 Sales Prediction System Using Machine Learning
 
 ## Overview
 
-The **Sales Analytics and Prediction System** is an end-to-end Machine Learning and Data Analytics project developed using Python, Flask, SQL, and Scikit-learn. The project analyzes historical sales data, provides business insights through exploratory data analysis (EDA) and SQL queries, and predicts the deal size of a sales order using a trained Machine Learning model.
+The **Sales Prediction System Using Machine Learning** is a Django-based web application that predicts the expected sales value for a customer order using a Machine Learning regression model. The system is trained on the **Sample Superstore** dataset and provides real-time sales predictions based on order details entered by the user.
 
-The application allows users to enter order details through a web interface and receive an ML-based prediction while also demonstrating data preprocessing, feature engineering, model training, and deployment.
+This project demonstrates the integration of **Machine Learning**, **Data Preprocessing**, and **Django Web Development** to build an intelligent business application.
 
 ---
 
 ## Problem Statement
 
-Businesses generate large volumes of sales data every day. Analyzing this data manually is time-consuming and makes it difficult to identify trends and support decision-making.
+Businesses process thousands of customer orders every day. Predicting the expected sales value before processing an order can help improve business planning and decision-making. Since sales depend on multiple factors such as product category, customer segment, location, shipping mode, quantity, and discount, manual estimation is difficult.
 
-This project aims to:
+This project uses Machine Learning to predict the expected sales amount from historical sales data.
 
-* Analyze historical sales data.
-* Identify sales trends and customer insights.
-* Train a Machine Learning model using historical records.
-* Predict the deal size of a new sales order.
-* Provide a simple web interface for making predictions.
+---
+
+## Objectives
+
+* Develop a Machine Learning model to predict sales values.
+* Perform data preprocessing and feature engineering.
+* Build a Django web application for real-time sales prediction.
+* Integrate the trained ML model with the web interface.
+* Provide a simple and interactive user experience.
 
 ---
 
 ## Features
 
-* Data cleaning and preprocessing using Pandas.
-* Exploratory Data Analysis (EDA).
-* SQL-based business analysis.
-* Machine Learning model training using Random Forest Classifier.
-* Prediction of Sales Deal Size (Small, Medium, Large).
-* User-friendly Flask web application.
-* Responsive HTML/CSS interface.
-* Ready for cloud deployment.
+* Predict sales using historical order data.
+* User-friendly web interface built with Django.
+* Machine Learning model integration.
+* Real-time prediction results.
+* Clean and responsive interface.
+* Easy to extend and deploy.
 
 ---
 
 ## Dataset
 
-The project uses a historical sales dataset containing information such as:
+The project uses the **Sample Superstore** dataset.
 
-* Order Number
-* Quantity Ordered
-* Price Each
+### Input Features
+
+* Category
+* Sub Category
+* Region
+* State
+* City
+* Segment
+* Ship Mode
+* Quantity
+* Discount
+
+### Target Variable
+
 * Sales
-* Order Date
-* Product Line
-* MSRP
-* Country
-* Territory
-* Customer Details
-* Deal Size
-* Order Status
 
 ---
 
@@ -60,139 +65,173 @@ The project uses a historical sales dataset containing information such as:
 
 * Python
 
-### Libraries
+### Machine Learning
 
+* Scikit-learn
 * Pandas
 * NumPy
-* Scikit-learn
 * Joblib
 
 ### Web Development
 
-* Flask
+* Django
 * HTML
 * CSS
 * JavaScript
 
 ### Database
 
-* MySQL
+* SQLite
 
-### Data Analysis
+### Development Tools
 
-* SQL
-* Matplotlib
-* Seaborn
+* Visual Studio Code
+* Jupyter Notebook
+* Git
+* GitHub
 
 ---
 
 ## Machine Learning Workflow
 
-1. Data Cleaning
-2. Exploratory Data Analysis
-3. Feature Selection
-4. One-Hot Encoding
-5. Train-Test Split
-6. Model Training
-7. Model Evaluation
-8. Model Serialization using Joblib
-9. Flask Integration
-10. Web Deployment
+1. Load the Sample Superstore dataset.
+2. Clean and preprocess the data.
+3. Encode categorical features.
+4. Scale numerical features (if required).
+5. Split the dataset into training and testing sets.
+6. Train the regression model.
+7. Save the trained pipeline and preprocessing objects.
+8. Integrate the model into the Django application.
+9. Predict sales based on user inputs.
 
 ---
 
 ## Project Structure
 
 ```text
-Sales_Deal_Size_Prediction/
+Sales_Prediction_System/
 │
 ├── dataset/
-│   └── clean_sales_data.csv
+│   └── SampleSuperstore.csv
+│
+├── ml/
+│   ├── train.py
+│   ├── predict.py
+│   └── pipeline.pkl
 │
 ├── model/
-│   ├── train_model.py
-│   ├── dealsize_model.pkl
-│   ├── target_encoder.pkl
-│   └── feature_columns.pkl
+│   ├── encoder.pkl
+│   └── scaler.pkl
 │
-├── static/
-│   └── css/
+├── predictor/
+│   ├── views.py
+│   ├── urls.py
+│   ├── models.py
+│   ├── admin.py
+│   ├── tests.py
+│   └── __init__.py
+│
+├── SalesPrediction/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py
+│   └── __init__.py
 │
 ├── templates/
-│   └── index.html
+│   └── predict.html
 │
-├── app.py
+├── db.sqlite3
+├── manage.py
 ├── requirements.txt
-├── README.md
-└── screenshots/
+└── README.md
 ```
 
 ---
 
-## How to Run
+## Installation
 
-### Clone the Repository
+### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/your-username/Sales_Prediction_System.git
 ```
 
-### Train the Model
+### 2. Navigate to the Project Folder
 
 ```bash
-python model/train_model.py
+cd Sales_Prediction_System
 ```
 
-### Run the Flask Application
+### 3. Run the Django Development Server
 
 ```bash
-python app.py
+python manage.py runserver
 ```
 
 Open your browser and visit:
 
-```text
-http://127.0.0.1:5000
+```
+http://127.0.0.1:8000/
 ```
 
 ---
 
-## Model Used
+## How the System Works
 
-* Random Forest Classifier
+1. The user enters order details through the Django web interface.
+2. Django receives the request and passes the input to the prediction module.
+3. The preprocessing pipeline transforms the input into the format expected by the trained model.
+4. The Machine Learning model predicts the sales value.
+5. The predicted sales amount is displayed on the webpage.
 
-The model is trained using selected features from the sales dataset to classify the deal size into:
+---
 
-* Small
-* Medium
-* Large
+## Machine Learning Model
+
+* **Problem Type:** Regression
+* **Target Variable:** Sales
+* **Input Variables:** Category, Sub Category, Region, State, City, Segment, Ship Mode, Quantity, and Discount.
+
+**Evaluation Metrics**
+
+* R² Score
+* Mean Absolute Error (MAE)
+* Root Mean Squared Error (RMSE)
+
+---
+
+## Application Screenshots
+
+Include screenshots of:
+
+* Home Page
+* Sales Prediction Form
+* Prediction Result
 
 ---
 
 ## Future Enhancements
 
-* Interactive analytics dashboard
-* Sales forecasting
-* Customer segmentation
-* Product recommendation system
-* Deployment on Render
-* User authentication
-* Export prediction reports
+* Interactive sales analytics dashboard.
+* User authentication and role management.
+* Prediction history storage.
+* Cloud deployment.
+* REST API integration.
+* Sales trend visualization.
+* Support for multiple machine learning models.
 
 ---
 
 ## Learning Outcomes
 
-Through this project, the following concepts were implemented:
+This project helped in understanding:
 
-* Data Cleaning
-* Exploratory Data Analysis
-* SQL Analysis
-* Feature Engineering
-* Machine Learning Classification
-* Model Evaluation
-* Flask Web Development
-* Model Deployment
+* Data preprocessing techniques.
+* Feature encoding and transformation.
+* Machine Learning regression.
+* Model serialization and deployment.
+* Django web development.
+* Integration of Machine Learning with web applications.
 
 ---
 
@@ -200,6 +239,12 @@ Through this project, the following concepts were implemented:
 
 **Srikanth**
 
-B.Tech – Computer Science and Engineering (AI & ML)
+B.Tech – Computer Science and Engineering (Artificial Intelligence & Machine Learning)
 
-Passionate about Machine Learning, Data Analytics, and Full Stack Development.
+**Skills:** Python, Django, Machine Learning, SQL, HTML, CSS, JavaScript
+
+---
+
+## License
+
+This project is developed for academic and learning purposes.
